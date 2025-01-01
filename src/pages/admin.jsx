@@ -23,7 +23,7 @@ const Drinks = () => {
 
   // Fetch drinks based on category
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/drinks?category=${category}`)
+    axios.get(`http://https://back-3rm2.onrender.com/api/drinks?category=${category}`)
       .then((res) => setDrinks(res.data))
       .catch((err) => console.error('Error fetching drinks:', err));
   }, [category]);
@@ -40,7 +40,7 @@ const Drinks = () => {
       drink: newDrink,
     };
     
-    axios.post('http://localhost:5000/api/drinks', drinkData)
+    axios.post('http://https://back-3rm2.onrender.com/api/drinks', drinkData)
       .then((res) => {
         setDrinks([...drinks, res.data]);
         setNewDrink({ name: '', ingredients: '', price: '' });
@@ -51,7 +51,7 @@ const Drinks = () => {
   // Handle updating a drink
   const handleUpdateDrink = () => {
     if (selectedDrinkName) {
-      axios.put(`http://localhost:5000/api/drinks/${category}/${selectedDrinkName}`, updatedDrink)
+      axios.put(`http://https://back-3rm2.onrender.com/api/drinks/${category}/${selectedDrinkName}`, updatedDrink)
         .then((res) => {
           const updatedDrinks = drinks.map((drink) =>
             drink.name === selectedDrinkName ? res.data : drink
@@ -66,7 +66,7 @@ const Drinks = () => {
 
   // Handle deleting a drink
   const handleDeleteDrink = (name) => {
-    axios.delete(`http://localhost:5000/api/drinks/${category}/${name}`)
+    axios.delete(`http://https://back-3rm2.onrender.com/api/drinks/${category}/${name}`)
       .then(() => {
         const filteredDrinks = drinks.filter((drink) => drink.name !== name);
         setDrinks(filteredDrinks);
